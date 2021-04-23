@@ -1,22 +1,21 @@
 #!/usr/bin/env bash 
 
-PIN_INPUT=3
-PIN_OUTPUT=2
+PINS_INPUT="3"
+PINS_OUTPUT="2"
 PINS="2 3"
 
 set_pin_mode()
 {
 	for i in $1
 	do
-			if [ $i -eq $2 ]; then
-				echo "in" > /sys/class/gpio/gpio$i/direction
-				echo "seting input on pin $i" 
-			fi
+		echo "in" > /sys/class/gpio/gpio$i/direction
+		echo "seting input on pin $i" 
+	done
 
-			if [ $i -eq $3 ]; then
-				echo "out" > /sys/class/gpio/gpio$i/direction
-				echo "seting output on pin $i" 
-			fi
+	for i in $2
+	do
+		echo "out" > /sys/class/gpio/gpio$i/direction
+		echo "seting output on pin $i"
 	done
 }
 
@@ -24,7 +23,6 @@ export_gpio_if_needed()
 {
 	for i in $1
 	do
-		echo i $i
 		FILE=/sys/class/gpio/gpio$i/direction
 		if [ -f "$FILE" ]; then
 			echo "$FILE already exists and PIN $i is already exported."
@@ -35,7 +33,7 @@ export_gpio_if_needed()
 }
 
 export_gpio_if_needed "$PINS"
-set_pin_mode "$PINS" $PIN_INPUT $PIN_OUTPUT
+set_pin_mode $PINS_INPUT $PINS_OUTPUT
 
 while [ 1 ]
 do
@@ -46,4 +44,5 @@ do
 	else
 		echo "0" > /sys/class/gpio/gpio2/value
 	fi	
+	sleep 0.1
 done
