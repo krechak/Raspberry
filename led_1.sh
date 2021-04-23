@@ -22,7 +22,6 @@ set_pin_mode()
 
 export_gpio_if_needed()
 {
-	echo $1
 	for i in $1
 	do
 		echo i $i
