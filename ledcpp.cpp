@@ -7,12 +7,11 @@ int main()
 {
     wiringPiSetupGpio();
 
-    int OUT = 2;
-    int IN = 3;
+    int OUT = 3;
+    int IN = 2;
 
     pinMode(OUT, OUTPUT);
     pinMode(IN, INPUT);
-    int button = 0;
 
     while(1)
     {
