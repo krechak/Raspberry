@@ -1,10 +1,10 @@
 #!/usr/bin/env bash 
 
-PINS_INPUT="20"
-PINS_OUTPUT="21"
-PINS="20 21"
-KEY_1="20"
-LED_1="21"
+PINS_INPUT="2"
+PINS_OUTPUT="3"
+PINS="2 3"
+KEY_1="2"
+LED_1="3"
 
 set_pin_mode()
 {
