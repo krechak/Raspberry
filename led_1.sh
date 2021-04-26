@@ -35,19 +35,14 @@ export_gpio_if_needed()
 	done
 }
 
-export_gpio_if_needed "$PINS"
-sleep 1
-set_pin_mode "$PINS_INPUT" "$PINS_OUTPUT"
-
-
 key_led_action()
 {
 	if [ $(cat /sys/class/gpio/gpio$1/value) -eq "1" ]; then
 		echo "0" > /sys/class/gpio/gpio$2/value	
-		echo "stan WYSOKI na pinie $2 spowodowany wciśnięciem przycisku $1"
+		echo "HIGH on pin $2"
 	else
 		echo "1" > /sys/class/gpio/gpio$2/value	
-		echo "stan NISKI na pinie $2 spowodowany wciśnięciem przycisku $1"
+		echo "LOW on pin $2"
 	fi
 }
 
@@ -66,6 +61,10 @@ led_pull_off()
 		gpio -g mode $1 tri
 	}
 }
+
+export_gpio_if_needed "$PINS"
+sleep 1
+set_pin_mode "$PINS_INPUT" "$PINS_OUTPUT"
 
 key_pull_up $KEY_1
 led_pull_off $LED_1
