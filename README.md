@@ -16,6 +16,7 @@ Raspberry
 1. Go to LED_1 catalog using: cd LED_1
 2. Send led_1.sh to raspberry Pi using command: scp led_1.sh raspberry:/programs
 3. Run with command: ssh raspberry programs/led_1.sh
+4. To stop program use keyboard shortcut ctrl+c
 
 ## ledcpp.cpp
 
@@ -39,6 +40,6 @@ Raspberry
 
 ### How to run:
 1. Run with command: ssh raspberry programs/ledcpp
-
+2. To stop program use keyboard shortcut ctrl+c
  
 
